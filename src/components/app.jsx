@@ -16,11 +16,11 @@ class App extends Component {
           <div className="left-scene">
             <SearchBar />
             <div className="selected-gif">
-              <Gif />
+              <Gif id="3o6nUSA4aoFMvfLAKQ" />
             </div>
           </div>
           <div className="right-scene">
-            <GifList gifs={gifs}/ >
+            <GifList gifs={gifs} />
           </div>
         </div>
       );

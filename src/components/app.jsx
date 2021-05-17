@@ -17,18 +17,29 @@ class App extends Component {
     this.selectGif = this.selectGif.bind(this);
   }
 
-  search = (query) => {
-    // TODO: API call
-    giphy('NfjUi2c2YRqhHyVMk948ZJDcIAjmjSrL').search({
-      q: query,
-      rating: 'g',
-      limit: 10
-    }, (error, result) => {
+  // search = (query) => {
+  //   // TODO: API call
+  //   giphy('NfjUi2c2YRqhHyVMk948ZJDcIAjmjSrL').search({
+  //     q: query,
+  //     rating: 'g',
+  //     limit: 10
+  //   }, (error, result) => {
+  //     this.setState({
+  //       gifs: result.data
+  //     });
+  //   });
+  // }
+
+  search(query) {
+    const giphEndpoint = `https://api.giphy.com/v1/gifs/search?api_key=NfjUi2c2YRqhHyVMk948ZJDcIAjmjSrL&q=${query}&limit=10`
+    fetch(giphEndpoint).then(response => response.json()).then((data) => {
+      const gifs = data.data.map(giph => giph.id)
       this.setState({
-        gifs: result.data
-      });
-    });
+        gifs: gifs
+      })
+    })
   }
+
   selectGif(id) {
     this.setState({
       selectedGifId: id
